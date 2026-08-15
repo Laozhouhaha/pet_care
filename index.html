@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爪爪优选 · 宠物用品一站式购物</title>
+  <meta name="description" content="爪爪优选——为爱宠精选优质宠粮、玩具、洗护、出行装备，正品保障，极速发货。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="topbar">🎉 新人专享：全场首单立减 20 元，<b>满 99 包邮</b>，优惠码 <b>PAW20</b></div>
+
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="index.html" class="logo"><span class="paw">🐾</span>爪爪优选</a>
+      <nav class="nav">
+        <a href="index.html" class="active">首页</a>
+        <a href="products.html">全部商品</a>
+        <a href="products.html?cat=food">宠粮零食</a>
+        <a href="products.html?cat=toy">玩具互动</a>
+        <a href="products.html?cat=care">洗护健康</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" title="购物车">🛒<span class="cart-badge" style="display:none">0</span></a>
+        <button class="icon-btn burger" aria-label="菜单">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <div class="drawer">
+      <button class="close" style="align-self:flex-end">✕</button>
+      <a href="index.html">🏠 首页</a>
+      <a href="products.html">🛍️ 全部商品</a>
+      <a href="products.html?cat=food">🍖 宠粮零食</a>
+      <a href="products.html?cat=toy">🎾 玩具互动</a>
+      <a href="products.html?cat=care">🧴 洗护健康</a>
+      <a href="cart.html">🛒 购物车</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>让每一只毛孩子<br>都值得被<span class="hl">温柔以待</span></h1>
+        <p class="sub">5000+ 养宠人信赖的宠物优选平台。精选全球优质宠粮、玩具与健康好物，从舌尖到窝里，给你最好的爱与陪伴。</p>
+        <div class="hero-cta">
+          <a href="products.html" class="btn btn-primary">立即选购 🛍️</a>
+          <a href="#categories" class="btn btn-ghost">浏览分类</a>
+        </div>
+        <div class="hero-trust">
+          <span>✅ 正品保障</span>
+          <span>🚚 48h 发货</span>
+          <span>🔄 7 天无理由退换</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <span class="paw-deco pd-1">🐾</span>
+        <span class="paw-deco pd-2">🦴</span>
+        <span class="paw-deco pd-3">🐾</span>
+        <div class="hero-pets">🐶🐱</div>
+        <div class="float-item fi-1">🍖 新鲜冻干</div>
+        <div class="float-item fi-2">🎾 每日互动</div>
+        <div class="float-item fi-3">🏆 4.9 口碑</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务亮点 -->
+  <section class="section">
+    <div class="wrap">
+      <div class="features">
+        <div class="feature"><div class="ico f-orange">🛡️</div><div><b>正品保障</b><span>品牌直供 · 假一赔十</span></div></div>
+        <div class="feature"><div class="ico f-teal">🚚</div><div><b>极速配送</b><span>48 小时内发出</span></div></div>
+        <div class="feature"><div class="ico f-yellow">🔄</div><div><b>无忧退换</b><span>7 天无理由退换</span></div></div>
+        <div class="feature"><div class="ico f-purple">👩‍⚕️</div><div><b>宠物医生在线</b><span>免费咨询养宠问题</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section class="section alt" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">按需选购</span>
+        <h2>一站式宠物用品分类</h2>
+        <p>从日常口粮到出行装备，覆盖毛孩子生活的方方面面</p>
+      </div>
+      <div class="cats" id="catsBox"></div>
+    </div>
+  </section>
+
+  <!-- 热卖商品 -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">大家都在买</span>
+        <h2>🔥 爆款热卖推荐</h2>
+        <p>高口碑复购之选，闭眼入不出错</p>
+      </div>
+      <div class="grid" id="hotBox"></div>
+      <div style="text-align:center;margin-top:40px">
+        <a href="products.html" class="btn btn-ghost">查看全部商品 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务展示 -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">品牌服务</span>
+        <h2>不止是卖货，更是贴心服务</h2>
+        <p>为爱宠提供全方位的生活解决方案</p>
+      </div>
+      <div class="services">
+        <div class="service" style="background:#fff0e6"><div class="emoji">🛁</div><h3>上门洗护美容</h3><p>专业持证美容师上门，药浴、造型、SPA一站式服务，足不出户让毛孩子焕然一新。</p><span class="more">预约服务 →</span></div>
+        <div class="service" style="background:#dff7f4"><div class="emoji">🏠</div><h3>安心寄养看护</h3><p>全屋监控 24 小时直播，独立舒适小窝，每天两次户外遛弯，实时反馈毛孩子动态。</p><span class="more">了解更多 →</span></div>
+        <div class="service" style="background:#fff4d9"><div class="emoji">💊</div><h3>宠物医生问诊</h3><p>三甲宠物医院执业医生在线坐诊，常见病免费咨询，让爱宠健康问题不再焦虑。</p><span class="more">立即问诊 →</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">真实好评</span>
+        <h2>养宠人怎么说</h2>
+        <p>来自主人的真实反馈，每一份信任都值得珍惜</p>
+      </div>
+      <div class="testis">
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>「换了这家冻干粮之后挑食的布偶居然光盘了！物流也快，客服回消息超有耐心，已经回购三次了。」</p>
+          <div class="who"><div class="avatar f-orange" style="background:#fff0e6">🐱</div><div><b>柚子妈妈</b><span>养宠 3 年 · 布偶猫</span></div></div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p>「自动饮水机太香了，多猫家庭再也不抢水了。过滤棉有替换装，包装很严实，值得推荐！」</p>
+          <div class="who"><div class="avatar f-teal" style="background:#dff7f4">🐶</div><div><b>奶茶爸比</b><span>养宠 5 年 · 柯基</span></div></div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★☆</div>
+          <p>「剪指甲套装很好用，安全挡板救了我家的猫咪。客服还发了教学视频，服务真的周到～」</p>
+          <div class="who"><div class="avatar f-yellow" style="background:#fff4d9">🐰</div><div><b>米粒的铲屎官</b><span>新手铲屎官</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA 订阅 -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>订阅会员，每月领取专属优惠 🎁</h2>
+          <p>新客立减 20，每周秒杀、宠物资讯、医生直播不错过</p>
+        </div>
+        <form class="newsletter" onsubmit="event.preventDefault();toast('订阅成功，欢迎加入爪爪家族 🐾')">
+          <input type="email" placeholder="请输入邮箱地址" required>
+          <button class="btn" type="submit">立即订阅</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="flogo"><span class="paw">🐾</span>爪爪优选</div>
+          <p class="desc">为毛孩子甄选全球好物，让每一份爱都落到实处。正品保障、极速发货、贴心服务，做你身边的养宠好帮手。</p>
+        </div>
+        <div>
+          <h4>购物指南</h4>
+          <ul>
+            <li><a href="#">购物流程</a></li>
+            <li><a href="#">配送说明</a></li>
+            <li><a href="#">售后政策</a></li>
+            <li><a href="#">常见问题</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="#">品牌故事</a></li>
+            <li><a href="#">加入我们</a></li>
+            <li><a href="#">养宠知识</a></li>
+            <li><a href="#">联系客服</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系我们</h4>
+          <ul class="contact">
+            <li>📞 400-888-5210（9:00-21:00）</li>
+            <li>✉️ hello@zhuazhua.shop</li>
+            <li>📍 上海市静安区爪爪路 88 号</li>
+            <li>🕘 在线客服：每日 9:00 - 21:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 爪爪优选 · 让爱宠生活更美好 🐾 本站为演示项目，商品信息均为虚构</div>
+    </div>
+  </footer>
+
+  <a href="cart.html" class="float-cart" title="购物车">🛒<span class="cart-badge" style="display:none">0</span></a>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderHome() {
+      // 分类卡片
+      const catsBox = document.getElementById("catsBox");
+      catsBox.innerHTML = CATEGORIES.map(c => `
+        <a class="cat-card" href="products.html?cat=${c.key}">
+          <div class="emoji" style="background:${c.grad}">${c.emoji}</div>
+          <b>${c.name}</b>
+          <span>${c.desc}</span>
+        </a>`).join("");
+
+      // 热卖商品：取 tag=hot + 销量排序取前 8
+      const hot = [...PRODUCTS]
+        .sort((a, b) => (b.tag === "hot") - (a.tag === "hot") || b.sales.replace("k", "000").replace(".", "") - a.sales.replace("k", "000").replace(".", ""))
+        .slice(0, 8);
+      document.getElementById("hotBox").innerHTML = hot.map(productCard).join("");
+    }
+    renderHome();
+  </script>
+</body>
+</html>

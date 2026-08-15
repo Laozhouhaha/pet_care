@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车 · 爪爪优选</title>
+  <meta name="description" content="爪爪优选购物车，结算您的宠物用品订单。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="topbar">🎉 新人专享：全场首单立减 20 元，<b>满 99 包邮</b>，优惠码 <b>PAW20</b></div>
+
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="index.html" class="logo"><span class="paw">🐾</span>爪爪优选</a>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="products.html">全部商品</a>
+        <a href="products.html?cat=food">宠粮零食</a>
+        <a href="products.html?cat=toy">玩具互动</a>
+        <a href="products.html?cat=care">洗护健康</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" title="购物车" style="background:#fff0e6">🛒<span class="cart-badge" style="display:none">0</span></a>
+        <button class="icon-btn burger" aria-label="菜单">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <div class="drawer">
+      <button class="close" style="align-self:flex-end">✕</button>
+      <a href="index.html">🏠 首页</a>
+      <a href="products.html">🛍️ 全部商品</a>
+      <a href="products.html?cat=food">🍖 宠粮零食</a>
+      <a href="products.html?cat=toy">🎾 玩具互动</a>
+      <a href="products.html?cat=care">🧴 洗护健康</a>
+      <a href="cart.html">🛒 购物车</a>
+    </div>
+  </div>
+
+  <!-- 页头 -->
+  <section class="page-hero">
+    <div class="wrap" style="padding-bottom:26px">
+      <h1>🛒 我的购物车</h1>
+      <p>确认好商品与数量，为毛孩子买单吧</p>
+    </div>
+  </section>
+
+  <div class="wrap cart-page" id="cartArea"></div>
+
+  <footer class="footer" style="margin-top:0">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="flogo"><span class="paw">🐾</span>爪爪优选</div>
+          <p class="desc">为毛孩子甄选全球好物，让每一份爱都落到实处。正品保障、极速发货、贴心服务，做你身边的养宠好帮手。</p>
+        </div>
+        <div>
+          <h4>购物指南</h4>
+          <ul>
+            <li><a href="#">购物流程</a></li>
+            <li><a href="#">配送说明</a></li>
+            <li><a href="#">售后政策</a></li>
+            <li><a href="#">常见问题</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="#">品牌故事</a></li>
+            <li><a href="#">加入我们</a></li>
+            <li><a href="#">养宠知识</a></li>
+            <li><a href="#">联系客服</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系我们</h4>
+          <ul class="contact">
+            <li>📞 400-888-5210（9:00-21:00）</li>
+            <li>✉️ hello@zhuazhua.shop</li>
+            <li>📍 上海市静安区爪爪路 88 号</li>
+            <li>🕘 在线客服：每日 9:00 - 21:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 爪爪优选 · 让爱宠生活更美好 🐾 本站为演示项目，商品信息均为虚构</div>
+    </div>
+  </footer>
+
+  <!-- 下单成功弹窗 -->
+  <div class="modal-mask" id="orderModal">
+    <div class="modal">
+      <div class="success-ico">🎉</div>
+      <h3>下单成功啦！</h3>
+      <p>您的订单已提交，毛孩子们的礼物已在飞奔而来～<br>（演示项目，不会真实扣款）</p>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="closeModal()">继续逛逛</button>
+        <a class="btn btn-primary" href="products.html">再买一件 🛍️</a>
+      </div>
+    </div>
+  </div>
+
+  <a href="cart.html" class="float-cart" title="购物车">🛒<span class="cart-badge" style="display:none">0</span></a>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
