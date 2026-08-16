@@ -1,4 +1,75 @@
 /* ===== 购物车页逻辑 ===== */
+
+const PET_OPTIONS = [
+  { key: "dog", name: "狗狗", emoji: "🐶" },
+  { key: "cat", name: "猫咪", emoji: "🐱" },
+  { key: "rabbit", name: "兔子", emoji: "🐰" },
+  { key: "hamster", name: "仓鼠", emoji: "🐹" },
+  { key: "bird", name: "鸟类", emoji: "🐦" },
+  { key: "reptile", name: "爬宠", emoji: "🦎" },
+  { key: "fish", name: "水族", emoji: "🐠" },
+  { key: "other", name: "其他", emoji: "🐾" },
+];
+
+const EXP_OPTIONS = [
+  { value: "new", label: "新手（<1 年）" },
+  { value: "1-3", label: "1-3 年" },
+  { value: "3-5", label: "3-5 年" },
+  { value: "5+", label: "5 年以上" },
+];
+
+const CUSTOMER_KEY = "paw_customer";
+
+function getCustomerInfo() {
+  try { return JSON.parse(localStorage.getItem(CUSTOMER_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function esc(s = "") {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function checkedIf(list, val) {
+  return Array.isArray(list) && list.includes(val) ? "checked" : "";
+}
+
+function infoForm() {
+  const saved = getCustomerInfo();
+  const petChips = PET_OPTIONS.map(p => `
+    <label class="chip"><input type="checkbox" name="pets" value="${p.key}" ${checkedIf(saved.pets, p.key)}><span>${p.emoji} ${p.name}</span></label>`).join("");
+  const catChips = CATEGORIES.map(c => `
+    <label class="chip"><input type="checkbox" name="cats" value="${c.key}" ${checkedIf(saved.cats, c.key)}><span>${c.emoji} ${c.name}</span></label>`).join("");
+  const expChips = EXP_OPTIONS.map(e => `
+    <label class="chip"><input type="radio" name="exp" value="${e.value}" ${saved.exp === e.value ? "checked" : ""}><span>${e.label}</span></label>`).join("");
+
+  return `
+  <form class="info-form" id="customerForm" onsubmit="event.preventDefault();checkout()">
+    <h3>📋 收件信息</h3>
+    <label class="field"><span>收货人姓名 *</span><input id="cfName" type="text" placeholder="请输入收货人姓名" value="${esc(saved.name)}" required></label>
+    <label class="field"><span>手机号码 *</span><input id="cfPhone" type="tel" placeholder="请输入 11 位手机号" value="${esc(saved.phone)}" required></label>
+    <label class="field"><span>收货地址 *</span><textarea id="cfAddress" rows="2" placeholder="省市区 + 详细地址" required>${esc(saved.address)}</textarea></label>
+
+    <h3>🐾 养宠档案 <span style="font-size:12px;font-weight:500;color:var(--ink-soft)">（选填，用于个性化推荐）</span></h3>
+    <div class="field">
+      <span>家里养了什么宠物？</span>
+      <div class="chips">${petChips}</div>
+    </div>
+    <div class="field">
+      <span>偏爱哪些品类？</span>
+      <div class="chips">${catChips}</div>
+    </div>
+    <div class="field">
+      <span>养宠经验</span>
+      <div class="chips">${expChips}</div>
+    </div>
+    <label class="field"><span>订单备注（选填）</span><textarea id="cfNote" rows="2" placeholder="例如：家有挑食猫咪，希望顺带推荐一些零食…">${esc(saved.note)}</textarea></label>
+  </form>`;
+}
+
 function renderCart() {
   const cart = getCart();
   const area = document.getElementById("cartArea");
@@ -22,28 +93,32 @@ function renderCart() {
 
   area.innerHTML = `
     <div class="cart-layout">
-      <div class="cart-items">
-        ${items.map(p => {
-          const qty = cart.find(c => c.id === p.id).qty;
-          const s = catStyle(p.cat);
-          return `
-          <div class="cart-item" data-id="${p.id}">
-            <div class="thumb" style="background:${s.grad}">${p.emoji}</div>
-            <div>
-              <h3>${p.name}</h3>
-              <span class="cat-tag">${CAT_NAMES[p.cat]}</span>
-              <div class="qty">
-                <button onclick="changeQty(${p.id}, -1)" ${qty <= 1 ? "disabled" : ""}>−</button>
-                <span>${qty}</span>
-                <button onclick="changeQty(${p.id}, 1)">＋</button>
+      <div class="cart-left">
+        <div class="cart-items">
+          ${items.map(p => {
+            const qty = cart.find(c => c.id === p.id).qty;
+            const s = catStyle(p.cat);
+            return `
+            <div class="cart-item" data-id="${p.id}">
+              <div class="thumb" style="background:${s.grad}">${p.emoji}</div>
+              <div>
+                <h3>${p.name}</h3>
+                <span class="cat-tag">${CAT_NAMES[p.cat]}</span>
+                <div class="qty">
+                  <button onclick="changeQty(${p.id}, -1)" ${qty <= 1 ? "disabled" : ""}>−</button>
+                  <span>${qty}</span>
+                  <button onclick="changeQty(${p.id}, 1)">＋</button>
+                </div>
+              </div>
+              <div class="right">
+                <div class="price">¥${(p.price * qty).toFixed(1).replace(/\.0$/, "")}</div>
+                <button class="rm-btn" onclick="removeItem(${p.id})">🗑️ 移除</button>
               </div>
             </div>
-            <div class="right">
-              <div class="price">¥${(p.price * qty).toFixed(1).replace(/\.0$/, "")}</div>
-              <button class="rm-btn" onclick="removeItem(${p.id})">🗑️ 移除</button>
-            </div>
-          </div>`;
-        }).join("")}
+            `;
+          }).join("")}
+        </div>
+        ${infoForm()}
       </div>
 
       <div class="summary">
@@ -81,6 +156,20 @@ function removeItem(id) {
 function checkout() {
   const cart = getCart();
   if (cart.length === 0) return;
+
+  const name = document.getElementById("cfName")?.value.trim() || "";
+  const phone = document.getElementById("cfPhone")?.value.trim() || "";
+  const address = document.getElementById("cfAddress")?.value.trim() || "";
+  if (!name) return toast("请先填写收货人姓名", "error");
+  if (!/^1[3-9]\d{9}$/.test(phone)) return toast("请填写正确的 11 位手机号", "error");
+  if (!address) return toast("请先填写收货地址", "error");
+
+  const pets = [...document.querySelectorAll('input[name="pets"]:checked')].map(i => i.value);
+  const cats = [...document.querySelectorAll('input[name="cats"]:checked')].map(i => i.value);
+  const exp = document.querySelector('input[name="exp"]:checked')?.value || "";
+  const note = document.getElementById("cfNote")?.value.trim() || "";
+
+  localStorage.setItem(CUSTOMER_KEY, JSON.stringify({ name, phone, address, pets, cats, exp, note, updatedAt: Date.now() }));
   document.getElementById("orderModal").classList.add("open");
 }
 

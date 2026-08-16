@@ -357,6 +357,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex; align-items: center; gap: 8px;
 }
 .toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: #e05a47; }
 
 /* ========== 商品页 ========== */
 .page-hero {
@@ -444,6 +445,55 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cart-empty { text-align: center; padding: 80px 20px; }
 .cart-empty .e { font-size: 72px; }
 .cart-empty p { color: var(--ink-soft); margin: 12px 0 26px; }
+
+/* ========== 客户信息表单 ========== */
+.cart-left { min-width: 0; }
+.info-form {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px;
+  margin-top: 18px;
+}
+.info-form h3 { font-size: 16px; margin: 22px 0 14px; }
+.info-form h3:first-child { margin-top: 0; }
+.info-form .form-sub { font-size: 12.5px; color: var(--ink-soft); margin: -8px 0 14px; }
+.field { margin-bottom: 16px; }
+.field > span { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.field input[type="text"],
+.field input[type="tel"],
+.field textarea {
+  width: 100%;
+  border: 1.5px solid var(--line); border-radius: 12px;
+  padding: 11px 14px; font-size: 14px; font-family: inherit;
+  outline: none; background: #fff; color: var(--ink);
+  transition: border-color .2s, box-shadow .2s;
+}
+.field textarea { resize: vertical; }
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, .12);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips .chip { position: relative; }
+.chips .chip input {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0;
+}
+.chips .chip span {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1.5px solid var(--line); background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--ink-soft);
+  cursor: pointer; user-select: none;
+  transition: border-color .15s, background .15s, color .15s, transform .15s;
+}
+.chips .chip:hover span { border-color: #f7cdbf; transform: translateY(-1px); }
+.chips .chip input:checked + span {
+  border-color: var(--primary); background: #fff0e6;
+  color: var(--primary-dark); font-weight: 700;
+}
+.chips .chip input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, .2);
+}
 
 /* ========== 模态框 ========== */
 .modal-mask {

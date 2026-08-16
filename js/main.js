@@ -32,7 +32,7 @@ function findProduct(id) {
 }
 
 /* ===== Toast ===== */
-function toast(msg) {
+function toast(msg, type = "ok") {
   let wrap = document.querySelector(".toast-wrap");
   if (!wrap) {
     wrap = document.createElement("div");
@@ -41,7 +41,8 @@ function toast(msg) {
   }
   const el = document.createElement("div");
   el.className = "toast";
-  el.innerHTML = `✅ ${msg}`;
+  if (type === "error") el.classList.add("error");
+  el.innerHTML = `${type === "error" ? "⚠️" : "✅"} ${msg}`;
   wrap.appendChild(el);
   requestAnimationFrame(() => el.classList.add("show"));
   setTimeout(() => {
